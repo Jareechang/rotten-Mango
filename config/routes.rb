@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+
+  get 'reviews/create'
+
   get 'session/new'
 
   get 'session/create'
 
+  resources :movies do 
+    resources :reviews, only: [:new, :create]
+  end
 
   resources :movies
   resources :users, only: [:new, :create]
