@@ -19,7 +19,7 @@ class Movie < ActiveRecord::Base
     presence: true
 
   validate :release_date_is_in_the_future
-
+  
   protected
 
   def release_date_is_in_the_future
