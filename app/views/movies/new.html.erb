@@ -1,2 +1,55 @@
 <h1>Movies#new</h1>
-<p>Find me in app/views/movies/new.html.erb</p>
+<h1>Rotten Mangoes</h1>
+<%= link_to "Submit a movie!", new_movie_path %>
+<hr>
+<% @movies.each do |movie| %>
+  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+  <h2><%= link_to movie.title, movie_path(movie) %></h2>
+  <h3><%= movie.release_date %></h3>
+  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+  <p><%= movie.description %></p>
+  <hr>
+<% end %>
+Nothing too different from our forum app so far. movies/show.html.erb too:
+
+<%= link_to "Back to all movies", movies_path %><br/>
+
+<%= link_to image_tag(@movie.poster_image_url), movie_path(@movie) %>
+<h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</h2>
+<h3><%= @movie.release_date %></h3>
+<h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
+<p><%= @movie.description %></p>
+Our movies/new.html.erb is pretty straightforward as well:
+
+<%= link_to "Back to all movies", movies_path %>
+
+<h2>Submit a movie!</h2>
+<%= form_for @movie do |f| %>
+  <div>
+    <%= f.label "title" %><br>
+    <%= f.text_field "title" %>
+  </div>
+  <div>
+    <%= f.label "release_date" %><br>
+    <%= f.date_field "release_date" %>
+  </div>
+  <div>
+    <%= f.label "director" %><br>
+    <%= f.text_field "director" %>
+  </div>
+  <div>
+    <%= f.label "runtime_in_minutes" %><br>
+    <%= f.number_field "runtime_in_minutes" %>
+  </div>
+  <div>
+    <%= f.label "poster_image_url" %><br>
+    <%= f.text_field "poster_image_url" %>
+  </div>
+  <div>
+    <%= f.label "description" %><br>
+    <%= f.text_area "description" %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %> 
+  </div>
+<% end %>
