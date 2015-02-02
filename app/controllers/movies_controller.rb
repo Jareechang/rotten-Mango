@@ -18,8 +18,8 @@ class MoviesController < ApplicationController
   def create 
     @movie = Movie.new(movie_params)
 
-    if @movie 
-      redirect_to movies_path 
+    if @movie.save 
+      redirect_to movies_path, notice: "#{@movie.title} was submitted succeesfully!"
     else
       render :new 
     end

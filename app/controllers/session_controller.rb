@@ -1,0 +1,21 @@
+class SessionController < ApplicationController
+  def new
+  end
+
+  def create
+    user = User.find_by(email: params[:password])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id 
+      redirect_to movies_path, notice: "Welcome Back, #{user.firstname}!"
+    else
+      render :new 
+    end
+  end
+
+  def destroy
+    sessions[:user_id] = nil
+    redirect_to movies_path, notice: "Adios!"
+
+  end
+end
