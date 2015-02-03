@@ -49,6 +49,7 @@ class MoviesController < ApplicationController
                                   :director, 
                                   :runtime_in_minutes,
                                   :poster_image_url,
-                                  :description)
+                                  :description,
+                                  :image)
   end
 end

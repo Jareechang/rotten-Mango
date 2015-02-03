@@ -9,6 +9,13 @@
     <h3> <%= movie.release_date %> </h3>
     <h4> <%= Dir %><%= movie.director %> | <%= movie.runtime_in_minutes %> Minutes </h4>
 
-    <p> <%= movie.descrption %> </p>
+    <p> <%= movie.description %> </p>
+     <%= image_tag movie.image_url(:thumb).to_s %> 
 <hr>
   <% end %>
+
+
+
+  <p> movie average : </p>
+  <%= @movie && @movie.review_average %>/10
+
