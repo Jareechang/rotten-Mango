@@ -19,3 +19,8 @@
   <p> movie average : </p>
   <%= @movie && @movie.review_average %>/10
 
+  <% if session[:user_id] && User.find(session[:user_id]).admin %>
+    <%= link_to "Admin", admin_users_path %>
+
+  <% end %> 
+

@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   protected 
+  def not_admin?
+   if !current_user.admin
+      flash[:alert] ="You are not an administrator"
+      redirect_to movies_path
+    end
+  end
+
   def restrict_access 
     if !current_user 
       flash[:alert] = "You must log in."
@@ -14,6 +21,8 @@ class ApplicationController < ActionController::Base
   def current_user 
     @current_user ||=User.find(session[:user_id]) if session[:user_id]
   end
+
+
 
   helper_method :current_user
 end
