@@ -1,4 +1,19 @@
-
+<table border="1">
+<tr>
+<th>first name</th>
+<th>last name </th>
+<th> email </th>
+<th> admin status </th>
+</tr>
+<tbody>
 <% @users.each do |user| %>
-  <p> <%= user.firstname %> <%= user.lastname %></p>
+<tr>
+  <td> <%= user.firstname %></td>
+  <td> <%= user.lastname %></td>
+  <td> <%= user.email %> </td>
+  <td> <%= user.admin %> </td>
+</tr>
 <% end %> 
+</tbody>
+</table>
+<%= paginate @users %>

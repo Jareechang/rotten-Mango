@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   def create
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.build(review_params)
-
+    @review.user = User.find(session[:user_id])
     if @review.save 
       redirect_to @movie, notice: "Review created successfully"
     else

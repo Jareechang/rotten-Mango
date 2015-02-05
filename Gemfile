@@ -28,6 +28,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'carrierwave'
 gem 'rmagick', '2.13.2'
+gem 'kaminari'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

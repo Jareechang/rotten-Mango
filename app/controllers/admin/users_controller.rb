@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController 
 
   def index
-    not_admin? 
-    user = User.find(session[:user_id]) 
-    if user.admin
-      @users = User.all
+    restrict_access
+    user = User.find(session[:user_id]) if session[:user_id]
+    if admin?
+      @users = User.all.page params[:page]
     end
   end
 
