@@ -1,7 +1,6 @@
 
 
 
-
 <%= form_for @movie, :html => {:multipart => true} do |f| %>
 
    <% if @movie.errors.any? %> 
@@ -47,6 +46,9 @@
     <%= f.submit "Submit" %> 
   </div>
 <% end %>
+
+
+
 
 
 

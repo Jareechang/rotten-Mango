@@ -8,7 +8,10 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def show
-
+  def destroy 
+    @user = User.find(params[:id])
+    UserMailer.mail_user(@user)
+    @user.destroy
+    redirect_to admin_users_path
   end
 end
