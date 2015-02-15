@@ -6,7 +6,7 @@
 <th> admin status </th>
 </tr>
 <tbody>
-<% @users.each do |user| %>
+<% @users && @users.each do |user| %>
 <tr>
   <td> <%= user.firstname %></td>
   <td> <%= user.lastname %></td>
@@ -17,4 +17,4 @@
 <% end %> 
 </tbody>
 </table>
-<%= paginate @users %>
+ <%= paginate(@users) %>

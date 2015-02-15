@@ -1,9 +1,9 @@
 class Admin::UsersController < ApplicationController 
 
   def index
-    restrict_access
-    user = User.find(session[:user_id]) if session[:user_id]
-    if admin?
+      restrict_access
+    if logged_in?   
+      admin?
       @users = User.all.page params[:page]
     end
   end

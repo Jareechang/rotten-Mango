@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
 
   protected 
   def admin?
-        if current_user.admin
-          flash[:alert] ="Great power, comes with great responsibilities"
-        else
-          flash[:alert] ="You are not an administrator"
-          redirect_to movies_path
-       end
+    if current_user.admin 
+      flash[:alert] ="Great power, comes with great responsibilities"
+    else
+      flash[:alert] ="You are not an administrator"
+      redirect_to movies_path
+   end
   end
 
   def restrict_access 
@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 
   def current_user 
     @current_user ||=User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in? 
+     !current_user.nil? 
   end
 
 
